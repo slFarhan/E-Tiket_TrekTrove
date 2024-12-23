@@ -7,7 +7,6 @@
     <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
 
     <!-- Navbar -->
-
     <nav x-data ="{ open: false }"class="bg-white border-gray-200 dark:bg-gray-900">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-5">
             <a href="{{route('dashboard')}}" class="flex items-center space-x-2 rtl:space-x-reverse">
@@ -37,9 +36,10 @@
                             {{ __('Profile') }}
                         </x-responsive-nav-link>
                         </li>
-                        <x-responsive-nav-link :href="route('profile.edit')" class="text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
-                            {{ __('Tiket') }}
-                        </x-responsive-nav-link>
+                        <x-responsive-nav-link :href="route('user.tickets')" class="text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
+    {{ __('Tiket') }}
+</x-responsive-nav-link>
+
                         <x-responsive-nav-link :href="route('profile.edit')" class="text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
                             {{ __('Pengaturan') }}
                         </x-responsive-nav-link>
@@ -56,6 +56,18 @@
                 </div>
 
                 <!-- Navbar -->
+            </div>
+            
+        <div class="flex items-center space-x-8">
+            <!-- Menu Links -->
+            <a href="{{route('dashboard')}}" class="text-gray-900 hover:text-gray-700 dark:text-white">Home</a>
+            <a href="{{route('destinasi')}}" class="text-gray-900 hover:text-gray-700 dark:text-white">Destination</a>
+            <a href="{{route('gallery')}}" class="text-gray-900 hover:text-gray-700 dark:text-white">Gallery</a>
+            <!-- <a href="{{route('login')}}" class="text-white hover:text-gray-700 dark:text-white">Sudah punya akun?</a> -->
+        </div>
+    </div>
+        </div>
+    </nav>
             </div>
             
         <div class="flex items-center space-x-8">

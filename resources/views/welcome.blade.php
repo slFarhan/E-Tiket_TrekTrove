@@ -58,7 +58,7 @@
             
         <div class="flex items-center space-x-8">
             <!-- Menu Links -->
-            <a href="#" class="text-gray-900 hover:text-gray-700 dark:text-white">Home</a>
+            <a href="#" class="text-gray-900 hover:text-gray-700 dark:text-white">Dashboard</a>
             <a href="#" class="text-gray-900 hover:text-gray-700 dark:text-white">Destination</a>
             <a href="#" class="text-gray-900 hover:text-gray-700 dark:text-white">Gallery</a>
             <a href="{{route('login')}}" class="text-gray-900 hover:text-gray-700 dark:text-white">Sudah punya akun?</a>

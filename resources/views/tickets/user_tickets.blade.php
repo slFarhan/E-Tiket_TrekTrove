@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Destinasi</title>
+    <title>Pesanan Saya</title>
     <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
 </head>
-
 <body>
-    <!-- Navbar -->
-    <nav x-data ="{ open: false }"class="bg-white border-gray-200 dark:bg-gray-900">
+     <!-- Navbar -->
+     <nav x-data ="{ open: false }"class="bg-white border-gray-200 dark:bg-gray-900">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-5">
             <a href="{{route('dashboard')}}" class="flex items-center space-x-2 rtl:space-x-reverse">
                 <img src="images/logo2.png" class="h-12" alt="Flowbite Logo" />
@@ -71,57 +69,41 @@
     </div>
         </div>
     </nav>
-
-    <!-- Form Filter dan Search -->
-    <section class="bg-gray-50 py-8 antialiased dark:bg-gray-900 md:py-12">
-        <div class="mx-auto max-w-screen-xl px-4 2xl:px-0">
-            <h2 class="text-xl font-semibold text-gray-900 dark:text-white sm:text-2xl">{{ $judul }}</h2>
-            <form method="get" action="{{ route('destinasi') }}" class="mt-6">
-                <div class="flex gap-4 mb-8">
-                    <!-- Pencarian Destinasi -->
-                    <input type="text" name="search" class="border border-gray-300 rounded-lg px-4 py-2 w-2/3" placeholder="Cari Destinasi..." value="{{ request('search') }}" />
-
-                    <!-- Filter Kategori -->
-                    <select name="kategori" class="border border-gray-300 rounded-lg px-4 py-2 w-1/3">
-                        <option value="">Semua Kategori</option>
-                        <option value="alam" {{ request('kategori') == 'alam' ? 'selected' : '' }}>Alam</option>
-                        <option value="kuliner" {{ request('kategori') == 'kuliner' ? 'selected' : '' }}>Kuliner</option>
-                        <option value="hiburan" {{ request('kategori') == 'hiburan' ? 'selected' : '' }}>Hiburan</option>
-                    </select>
-
-                    <!-- Tombol Filter -->
-                    <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700">
-                        Filter
-                    </button>
-                </div>
-            </form>
-
-            <!-- Destinasi Card -->
-            <div class="mt-8 grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-                @foreach ($filteredDestinasi as $item)
-                    <div class="rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
-                        <img class="h-48 w-full object-cover rounded-md" src="{{ asset($item['gambar']) }}" alt="{{ $item['nama'] }}">
-                        <div class="mt-4">
-                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">{{ $item['nama'] }}</h3>
-                            <p class="text-gray-500 dark:text-gray-400">
-                                {{ \Illuminate\Support\Str::words($item['deskripsi'], 9, '...') }}
-                            </p>
-                            <p class="mt-2 text-blue-600 dark:text-blue-400 font-semibold">Rp. {{ number_format($item['harga'], 0, ',', '.') }}</p>
-                            <a href="{{ route('destinasi.show', ['id' => $item['id']]) }}" class="mt-4 inline-block px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded hover:bg-blue-700">
-                                Lihat Detail
-                            </a>
-                            <a href="{{ route('tickets.create', ['destinasiId' => $item['id']]) }}" 
-   class="mt-2 inline-block px-4 py-2 text-sm font-medium text-white bg-green-600 rounded hover:bg-green-700">
-   Pesan Tiket
-</a>
-
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-    </section>
-    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>x
+<section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5">
+    <div class="flex text-bold w-full text-xl py-4 px-4"> 
+        <strong>Pesanan Saya</strong>
+    </div>
+    <div class="overflow-x-auto">
+        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <tr>
+                    <th scope="col" class="px-4 py-3">ID Tiket</th>
+                    <th scope="col" class="px-4 py-3">Destinasi</th>
+                    <th scope="col" class="px-4 py-3">Tanggal</th>
+                    <th scope="col" class="px-4 py-3">Jumlah</th>
+                    <th scope="col" class="px-4 py-3">Total Harga</th>
+                </tr>
+            </thead>
+            <tbody>
+                @forelse($tickets as $ticket)
+                <tr class="border-b dark:border-gray-700">
+                    <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {{ $ticket->id }}
+                    </th>
+                    <td class="px-4 py-3">{{ $ticket->destinasi->nama ?? 'N/A' }}</td>
+                    <td class="px-4 py-3">{{ $ticket->tanggal }}</td>
+                    <td class="px-4 py-3">{{ $ticket->jumlah }}</td>
+                    <td class="px-4 py-3">Rp {{ number_format($ticket->total_harga, 0, ',', '.') }}</td>
+                </tr>
+                @empty
+                <tr>
+                    <td colspan="5" class="text-center py-4">Belum ada tiket yang dipesan.</td>
+                </tr>
+                @endforelse
+            </tbody>
+        </table>
+    </div>
+</section>
+<script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
 </body>
-
 </html>
