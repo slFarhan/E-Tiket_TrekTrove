@@ -100,7 +100,7 @@
             <div class="mt-8 grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                 @foreach ($filteredDestinasi as $item)
                     <div class="rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
-                        <img class="h-48 w-full object-cover rounded-md" src="{{ asset($item['gambar']) }}" alt="{{ $item['nama'] }}">
+                        <img class="h-48 w-full object-cover rounded-md" src="{{ asset('storage/'. $item->gambar)}}" alt="{{ $item['nama'] }}">
                         <div class="mt-4">
                             <h3 class="text-lg font-semibold text-gray-900 dark:text-white">{{ $item['nama'] }}</h3>
                             <p class="text-gray-500 dark:text-gray-400">

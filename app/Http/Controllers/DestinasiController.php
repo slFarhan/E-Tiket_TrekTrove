@@ -1,19 +1,28 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Destinasi;
+use App\Models\Ulasan;
 
 class DestinasiController extends Controller
 {
+    // Menampilkan halaman detail destinasi berdasarkan ID
     public function show($id)
     {
         // Mencari destinasi berdasarkan ID, jika tidak ditemukan akan menghasilkan error 404
         $destinasi = Destinasi::findOrFail($id);
         
+        $ulasan = Ulasan::where("destinasi_id", $id)->with('users')->get();
+        // dd($ulasan->users->name);
         // Mengirim data destinasi ke view
-        return view('destinasi.show', ['destinasi' => $destinasi]);
+        return view('destinasi.show', compact('destinasi','ulasan'));
+
+        
     }
+
+    // Menampilkan halaman destinasi dengan filter pencarian dan kategori
     public function destinasi(Request $request)
     {
         // Menentukan judul berdasarkan pencarian atau kategori
@@ -44,4 +53,31 @@ class DestinasiController extends Controller
         // Kirim data destinasi dan judul ke view
         return view('destinasi.destinasi', compact('filteredDestinasi', 'judul')); // Kirimkan data ke view
     }
+
+    public function create(){
+        return view('destinasi.create');
+    }
+
+    public function store(Request $request){
+        $request->validate([
+            'nama'=> 'required|string',
+            'deskripsi' =>'required|string',
+            'harga' => 'required|string',
+            'kategori'=> 'required|string',
+            'foto' =>'required|image|max:10240',
+        ]);
+
+        $pathGambar = $request->file('foto')->store('public/gambar');
+        
+        Destinasi::create([
+            'nama'=> $request->nama,
+            'deskripsi' =>  $request->deskripsi,
+            'harga' =>  $request->harga,
+            'kategori'=>  $request->kategori,
+            'gambar' => $pathGambar,
+        ]);
+
+        return redirect()->route('destinasi')->with('success','');
+    }
+    
 }

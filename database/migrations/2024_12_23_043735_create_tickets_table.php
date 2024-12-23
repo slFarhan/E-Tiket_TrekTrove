@@ -13,8 +13,10 @@ return new class extends Migration
 {
     Schema::create('tickets', function (Blueprint $table) {
         $table->id();
-        $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-        $table->foreignId('destinasi_id')->constrained('destinasis')->onDelete('cascade');
+        $table->unsignedBigInteger('user_id');
+        $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+        $table->unsignedBigInteger('destinasi_id');
+        $table->foreign('destinasi_id')->references('id')->on('destinasi')->onDelete('cascade');
         $table->string('nama');
         $table->integer('jumlah');
         $table->date('tanggal');

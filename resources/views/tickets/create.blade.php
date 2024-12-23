@@ -71,7 +71,7 @@
 
             <!-- Right Section -->
             <div>
-                <img src="{{ asset($destinasi->gambar) }}" alt="{{ $destinasi->nama }}" class="rounded-md mb-4">
+                <img src="{{ asset('storage/'. $destinasi->gambar)}}" alt="{{ $destinasi['nama'] }}" class="rounded-md mb-4">
                 <h3 class="text-xl font-semibold text-gray-800">{{ $destinasi->nama }}</h3>
                 <p class="text-red-500 text-sm mt-2">Non refundable</p>
 

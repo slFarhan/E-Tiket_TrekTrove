@@ -31,7 +31,7 @@ class TicketController extends Controller
 
         // Simpan data ke tabel tickets
         Ticket::create([
-            'user_id' => auth()->id(),
+            'user_id' =>Auth::id(),
             'destinasi_id' => $destinasi->id,
             'nama' => $request->nama,
             'jumlah' => $request->jumlah,
