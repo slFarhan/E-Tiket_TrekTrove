@@ -76,31 +76,33 @@
     <div class="overflow-x-auto">
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                <tr>
-                    <th scope="col" class="px-4 py-3">ID Tiket</th>
-                    <th scope="col" class="px-4 py-3">Destinasi</th>
-                    <th scope="col" class="px-4 py-3">Tanggal</th>
-                    <th scope="col" class="px-4 py-3">Jumlah</th>
-                    <th scope="col" class="px-4 py-3">Total Harga</th>
-                </tr>
-            </thead>
-            <tbody>
-                @forelse($tickets as $ticket)
-                <tr class="border-b dark:border-gray-700">
-                    <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        {{ $ticket->id }}
-                    </th>
-                    <td class="px-4 py-3">{{ $ticket->destinasi->nama ?? 'N/A' }}</td>
-                    <td class="px-4 py-3">{{ $ticket->tanggal }}</td>
-                    <td class="px-4 py-3">{{ $ticket->jumlah }}</td>
-                    <td class="px-4 py-3">Rp {{ number_format($ticket->total_harga, 0, ',', '.') }}</td>
-                </tr>
-                @empty
-                <tr>
-                    <td colspan="5" class="text-center py-4">Belum ada tiket yang dipesan.</td>
-                </tr>
-                @endforelse
-            </tbody>
+            <tr>
+    <th scope="col" class="px-4 py-3">Nama Pemesan</th>
+    <th scope="col" class="px-4 py-3">Destinasi</th>
+    <th scope="col" class="px-4 py-3">Tanggal</th>
+    <th scope="col" class="px-4 py-3">Jumlah</th>
+    <th scope="col" class="px-4 py-3">Total Harga</th>
+    <th scope="col" class="px-4 py-3">Status</th>
+</tr>
+</thead>
+<tbody>
+    @forelse($tickets as $ticket)
+    <tr class="border-b dark:border-gray-700">
+        <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+            {{ $ticket->nama ?? 'N/A' }}
+        </th>
+        <td class="px-4 py-3">{{ $ticket->destinasi->nama ?? 'N/A' }}</td>
+        <td class="px-4 py-3">{{ $ticket->tanggal }}</td>
+        <td class="px-4 py-3">{{ $ticket->jumlah }}</td>
+        <td class="px-4 py-3">Rp {{ number_format($ticket->total_harga, 0, ',', '.') }}</td>
+    </tr>
+    @empty
+    <tr>
+        <td colspan="5" class="px-4 py-3 text-center">Data tiket tidak tersedia</td>
+    </tr>
+    @endforelse
+</tbody>
+
         </table>
     </div>
 </section>

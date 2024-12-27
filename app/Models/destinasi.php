@@ -19,4 +19,10 @@ class destinasi extends Model
         'gambar',
         'kategori',
     ];
+
+    public function tickets()
+{
+    return $this->hasMany(Ticket::class, 'destinasi_id');
+}
+
 }

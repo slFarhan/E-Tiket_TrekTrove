@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
 
     <!-- Navbar -->
-    <nav x-data ="{ open: false }"class="bg-white border-gray-200 dark:bg-gray-900">
+    <nav x-data="{ open: false }" class="bg-white border-gray-200 dark:bg-gray-900">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-5">
             <a href="{{route('dashboard')}}" class="flex items-center space-x-2 rtl:space-x-reverse">
                 <img src="images/logo2.png" class="h-12" alt="Flowbite Logo" />
@@ -27,62 +28,50 @@
                 <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600"
                     id="user-dropdown">
                     <div class="px-4 py-3">
-                    <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
-                    <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
+                        <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
+                        <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
                     </div>
                     <ul class="py-2" aria-labelledby="user-menu-button">
                         <li>
-                        <x-responsive-nav-link :href="route('profile.edit')" class="text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
-                            {{ __('Profile') }}
-                        </x-responsive-nav-link>
+                            <x-responsive-nav-link :href="route('profile.edit')" class="text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
+                                {{ __('Profile') }}
+                            </x-responsive-nav-link>
                         </li>
                         <x-responsive-nav-link :href="route('user.tickets')" class="text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
-    {{ __('Tiket') }}
-</x-responsive-nav-link>
+                            {{ __('Tiket') }}
+                        </x-responsive-nav-link>
 
                         <x-responsive-nav-link :href="route('profile.edit')" class="text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
                             {{ __('Pengaturan') }}
                         </x-responsive-nav-link>
                         <form method="POST" action="{{ route('logout') }}">
-                    @csrf
+                            @csrf
 
-                    <x-responsive-nav-link class="text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white" :href="route('logout')"
-                            onclick="event.preventDefault();
+                            <x-responsive-nav-link class="text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white" :href="route('logout')"
+                                onclick="event.preventDefault();
                                         this.closest('form').submit();">
-                        {{ __('Log Out') }}
-                    </x-responsive-nav-link>
-                    </form>
+                                {{ __('Log Out') }}
+                            </x-responsive-nav-link>
+                        </form>
                     </ul>
                 </div>
 
                 <!-- Navbar -->
             </div>
-            
-        <div class="flex items-center space-x-8">
-            <!-- Menu Links -->
-            <a href="{{route('dashboard')}}" class="text-gray-900 hover:text-gray-700 dark:text-white">Home</a>
-            <a href="{{route('destinasi')}}" class="text-gray-900 hover:text-gray-700 dark:text-white">Destination</a>
-            <a href="{{route('gallery')}}" class="text-gray-900 hover:text-gray-700 dark:text-white">Gallery</a>
-            <!-- <a href="{{route('login')}}" class="text-white hover:text-gray-700 dark:text-white">Sudah punya akun?</a> -->
-        </div>
-    </div>
-        </div>
-    </nav>
+
+            <div class="flex items-center space-x-8">
+                <!-- Menu Links -->
+                <a href="{{route('dashboard')}}" class="text-gray-900 hover:text-gray-700 dark:text-white">Home</a>
+                <a href="{{route('destinasi')}}" class="text-gray-900 hover:text-gray-700 dark:text-white">Destination</a>
+                <a href="{{route('gallery')}}" class="text-gray-900 hover:text-gray-700 dark:text-white">Gallery</a>
+                <!-- <a href="{{route('login')}}" class="text-white hover:text-gray-700 dark:text-white">Sudah punya akun?</a> -->
             </div>
-            
-        <div class="flex items-center space-x-8">
-            <!-- Menu Links -->
-            <a href="{{route('dashboard')}}" class="text-gray-900 hover:text-gray-700 dark:text-white">Home</a>
-            <a href="{{route('destinasi')}}" class="text-gray-900 hover:text-gray-700 dark:text-white">Destination</a>
-            <a href="{{route('gallery')}}" class="text-gray-900 hover:text-gray-700 dark:text-white">Gallery</a>
-            <!-- <a href="{{route('login')}}" class="text-white hover:text-gray-700 dark:text-white">Sudah punya akun?</a> -->
         </div>
-    </div>
         </div>
-    </nav>
 </head>
+
 <body>
-<div class="py-12">
+    <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
             <!-- Grid Layout -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -102,14 +91,14 @@
                     </div>
 
                     <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.delete-user-form')
-              </div>
+                        <div class="max-w-xl">
+                            @include('profile.partials.delete-user-form')
+                        </div>
+                    </div>
+
+
+                </div>
             </div>
-
-
-        </div>
-    </div>
 
             <!-- Save Changes Section -->
             <div class="flex justify-end space-x-4">
@@ -124,7 +113,5 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
 </body>
+
 </html>
-
-    
-

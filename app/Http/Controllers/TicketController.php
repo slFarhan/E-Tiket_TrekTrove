@@ -44,11 +44,17 @@ class TicketController extends Controller
 
     public function userTickets()
     {
-        // Ambil tiket berdasarkan user yang sedang login
-        $tickets = Ticket::where('user_id', Auth::id())->get();
+        // Ambil tiket berdasarkan user yang sedang login, dengan relasi destinasi
+        $tickets = Ticket::where('user_id', Auth::id())
+                         ->with('destinasi') // Memuat relasi destinasi
+                         ->get();
     
         // Mengirimkan data tiket ke view
         return view('tickets.user_tickets', compact('tickets'));
     }
+    
+
+    
+
     
 }

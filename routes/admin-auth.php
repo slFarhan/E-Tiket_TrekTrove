@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Admin\Auth\RegisteredUserController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,9 +19,14 @@ Route::middleware('guest:admin')->prefix('admin')->name('admin.')->group(functio
 });
 
 Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function () {
-    Route::get('/dashboard', function () {
-        return view('admin.dashboard');
-    })->middleware(['verified'])->name('dashboard');
+    // Route::get('/dashboard', function () {
+    //     return view('admin.dashboard');
+        Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
+        Route::get('/destinasi', [AdminController::class, 'destinasi'])->name('destinasi');
+        Route::get('/ticket', [AdminController::class, 'tickets'])->name('ticket');
+    // )->middleware(['verified'])->name('dashboard');
+
+    
     
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

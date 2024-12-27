@@ -77,7 +77,18 @@ class DestinasiController extends Controller
             'gambar' => $pathGambar,
         ]);
 
-        return redirect()->route('destinasi')->with('success','');
+        return redirect()->route('admin.mystore')->with('success','');
+    }
+
+
+
+    
+
+
+
     }
     
-}
+
+    
+    
+
