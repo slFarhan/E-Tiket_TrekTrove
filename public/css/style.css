@@ -525,6 +525,24 @@ body {
 #content main .table-data .todo .todo-list li:last-child {
 	margin-bottom: 0;
 }
+
+/* Add these classes to your existing CSS to style the status based on payment */
+.status.paid {
+    background-color: green;
+    color: white;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-weight: 700;
+}
+
+.status.unpaid {
+    background-color: red;
+    color: white;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-weight: 700;
+}
+
 /* MAIN */
 /* CONTENT */
 

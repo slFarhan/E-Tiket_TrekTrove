@@ -44,14 +44,7 @@
                     @csrf
 
                     <!-- User Type Selection -->
-                    <div class="mb-4">
-                        <x-input-label for="user_type" :value="__('Login sebagai')" />
-                        <select id="user_type" name="user_type" class="block mt-1 w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
-                            <option value="user">User</option>
-                            <option value="admin">Admin</option>
-                            <option value="pengelola">Pengelola</option>
-                        </select>
-                    </div>
+                    
 
                     <!-- Email Address -->
                     <div>
@@ -91,16 +84,5 @@
             </div>
         </div>
     </div>
-
-    <!-- JavaScript untuk Redirect -->
-    <script>
-        document.getElementById('user_type').addEventListener('change', function() {
-            if (this.value === 'admin') {
-                window.location.href = "{{ route('admin.login') }}"; 
-            } else if (this.value === 'pengelola') {
-                window.location.href = "{{ route('pengelola.login') }}"; 
-            }
-        });
-    </script>
 </body>
 </html>

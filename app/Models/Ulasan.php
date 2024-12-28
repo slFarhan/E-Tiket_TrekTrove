@@ -11,4 +11,8 @@ class Ulasan extends Model
     public function users(){
         return $this->belongsTo(User::class,"user_id");
     }
+    public function destinasi()
+    {
+        return $this->belongsTo(Destinasi::class);
+    }
 }

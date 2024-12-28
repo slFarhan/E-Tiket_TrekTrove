@@ -21,7 +21,7 @@
                     data-dropdown-placement="bottom">
                     <span class="sr-only">Open user menu</span>
                     <img class="w-8 h-8 rounded-full"
-                        src="images/Download Social Media Chatting Online Blank Profile Picture Head And Body Icon People Standing Icon Grey Background for free.jpg"
+                        src="{{asset('images/profile.jpg')}}"
                         alt="user photo">
                 </button>
                 <!-- Dropdown menu -->
@@ -95,6 +95,7 @@
         <td class="px-4 py-3">{{ $ticket->tanggal }}</td>
         <td class="px-4 py-3">{{ $ticket->jumlah }}</td>
         <td class="px-4 py-3">Rp {{ number_format($ticket->total_harga, 0, ',', '.') }}</td>
+        <td class="px-4 py-3">{{ $ticket->status }}</td>
     </tr>
     @empty
     <tr>

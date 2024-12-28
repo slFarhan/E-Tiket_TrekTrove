@@ -11,7 +11,6 @@ class Order extends Model
 
     protected $fillable = [
         'order_id',
-        'user_id',
         'total_price',
         'status',
         'payment_status'
@@ -22,9 +21,9 @@ class Order extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function orderDetails()
+    public function Tickets()
     {
-        return $this->hasMany(OrderDetail::class);
+        return $this->hasMany(Ticket::class);
     }
     /**
      * Mendefinisikan relasi dengan payment.
@@ -33,7 +32,7 @@ class Order extends Model
      */
     public function payments()
     {
-        return $this->hasMany(Payment::class);
+        return $this->hasMany(Payment::class,'order_id');
     }
     
 }

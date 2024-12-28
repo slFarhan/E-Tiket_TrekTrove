@@ -20,8 +20,9 @@
                     id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown"
                     data-dropdown-placement="bottom">
                     <span class="sr-only">Open user menu</span>
+                    <span class="sr-only">Open user menu</span>
                     <img class="w-8 h-8 rounded-full"
-                        src="images/Download Social Media Chatting Online Blank Profile Picture Head And Body Icon People Standing Icon Grey Background for free.jpg"
+                        src="{{asset('images/profile.jpg')}}"
                         alt="user photo">
                 </button>
                 <!-- Dropdown menu -->

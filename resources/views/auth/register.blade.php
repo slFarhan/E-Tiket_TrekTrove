@@ -40,16 +40,6 @@
                 <form method="POST" action="{{ route('register') }}">
                     @csrf
 
-                     <!-- User Type Selection -->
-                    <div class="mb-4">
-                        <x-input-label for="user_type" :value="__('Login sebagai')" />
-                        <select id="user_type" name="user_type" class="block mt-1 w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
-                            <option value="user">User</option>
-                            <option value="pengelola">Pengelola</option>
-                        </select>
-                    </div>
-                    
-
                     <!-- Name -->
                     <div>
                         <x-input-label for="name" :value="__('Name')" />

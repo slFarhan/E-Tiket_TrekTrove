@@ -16,6 +16,8 @@ class Ticket extends Model
         'jumlah',
         'tanggal',
         'total_harga',
+        'status',
+        'payment_status',
     ];
 
     public function user()
@@ -24,7 +26,8 @@ class Ticket extends Model
     }
 
     public function destinasi()
-    {
-        return $this->belongsTo(Destinasi::class);
-    }
+{
+    return $this->belongsTo(Destinasi::class, 'destinasi_id'); // Pastikan kolom foreign key benar
+}
+
 }

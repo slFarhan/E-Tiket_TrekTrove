@@ -16,13 +16,18 @@ class destinasi extends Model
         'nama',
         'deskripsi',
         'harga',
-        'gambar',
         'kategori',
+        'gambar',
+        'created_at',
+        'updated_at',
     ];
 
     public function tickets()
 {
     return $this->hasMany(Ticket::class, 'destinasi_id');
 }
-
+public function ulasan()
+{
+    return $this->hasMany(Ulasan::class); // Asumsikan tabel ulasan menggunakan model Review
+}
 }

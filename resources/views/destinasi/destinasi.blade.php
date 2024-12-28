@@ -13,7 +13,7 @@
     <nav x-data="{ open: false }" class="bg-white border-gray-200 dark:bg-gray-900">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-5">
             <a href="{{route('dashboard')}}" class="flex items-center space-x-2 rtl:space-x-reverse">
-                <img src="images/logo2.png" class="h-12" alt="Flowbite Logo" />
+                <img src="{{asset('images/logo2.png')}}" class="h-12" alt="Flowbite Logo" />
                 <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Trektrove</span>
             </a>
             <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
@@ -23,7 +23,7 @@
                     data-dropdown-placement="bottom">
                     <span class="sr-only">Open user menu</span>
                     <img class="w-8 h-8 rounded-full"
-                        src="images/Download Social Media Chatting Online Blank Profile Picture Head And Body Icon People Standing Icon Grey Background for free.jpg"
+                        src="{{asset('images/profile.jpg')}}"
                         alt="user photo">
                 </button>
                 <!-- Dropdown menu -->
@@ -104,7 +104,7 @@
                     <div class="mt-4">
                         <h3 class="text-lg font-semibold text-gray-900 dark:text-white">{{ $item['nama'] }}</h3>
                         <p class="text-gray-500 dark:text-gray-400">
-                            {{ \Illuminate\Support\Str::words($item['deskripsi'], 9, '...') }}
+                            {{ \Illuminate\Support\Str::words($item['deskripsi'], 6, '...') }}
                         </p>
                         <p class="mt-2 text-blue-600 dark:text-blue-400 font-semibold">Rp. {{ number_format($item['harga'], 0, ',', '.') }}</p>
                         <a href="{{ route('destinasi.show', ['id' => $item['id']]) }}" class="mt-4 inline-block px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded hover:bg-blue-700">

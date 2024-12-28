@@ -34,7 +34,7 @@
             <!-- Right Side: Login Form -->
             <div class="w-1/2 p-10">
                 <h2 class="text-2xl font-semibold text-green-700 mb-4">Login</h2>
-                <p class="text-gray-600 mb-8">Don't have an account? <a href="{{ route('register') }}" class="text-green-700 font-medium">Create an account</a></p>
+                <p class="text-gray-600 mb-8">Login as Trektrove Admin </p>
 
                 <!-- Session Status -->
                 <x-auth-session-status class="mb-4" :status="session('status')" />
@@ -42,16 +42,6 @@
                 <!-- Login Form -->
                 <form method="POST" action="{{ route('admin.login') }}" id="loginForm">
                     @csrf
-
-                    <!-- User Type Selection -->
-                    <div class="mb-4">
-                        <x-input-label for="user_type" :value="__('Login sebagai')" />
-                        <select id="user_type" name="user_type" class="block mt-1 w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
-                            <option value="admin">Admin</option>
-                            <option value="user">User</option>
-                            <option value="pengelola">Pengelola</option>
-                        </select>
-                    </div>
 
                     <!-- Email Address -->
                     <div>

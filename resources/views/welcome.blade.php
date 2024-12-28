@@ -17,21 +17,21 @@
             </a>
             <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
                 <button type="button"
-                    class="flex text-sm bg-white-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600">                    
-                        <a href="{{route('login')}}" class="text-gray-900 hover:text-gray-700 dark:text-white">Login</a>
+                    class="flex text-sm bg-white-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600">
+                    <a href="{{route('login')}}" class="text-gray-900 hover:text-gray-700 dark:text-white">Login</a>
                 </button>
                 <!-- Dropdown menu -->
                 <!-- Navbar -->
             </div>
-            
-        <div class="flex items-center space-x-8">
-            <!-- Menu Links -->
-            <a href="#" class="text-gray-900 hover:text-gray-700 dark:text-white">Dashboard</a>
-            <a href="#" class="text-gray-900 hover:text-gray-700 dark:text-white">Destination</a>
-            <a href="#" class="text-gray-900 hover:text-gray-700 dark:text-white">Gallery</a>
-            
+
+            <div class="flex items-center space-x-8">
+                <!-- Menu Links -->
+                <a href="#" class="text-gray-900 hover:text-gray-700 dark:text-white">Dashboard</a>
+                <a href="#" class="text-gray-900 hover:text-gray-700 dark:text-white">Destination</a>
+                <a href="#" class="text-gray-900 hover:text-gray-700 dark:text-white">Gallery</a>
+
+            </div>
         </div>
-    </div>
         </div>
     </nav>
 </head>
@@ -208,7 +208,7 @@
 
 
     <section
-        class="bg-center bg-no-repeat bg-[url('https://i.ibb.co.com/qj6w16J/cartil1.jpg')] bg-gray-700 bg-blend-multiply">
+        class="bg-center bg-no-repeat bg-[url('{{ asset('images/wahoo.jpg') }}')]  bg-gray-500 bg-blend-multiply">
 
         <div class="px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-56">
             <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">
@@ -233,6 +233,7 @@
             </div>
         </div>
     </section>
+
 
 
 

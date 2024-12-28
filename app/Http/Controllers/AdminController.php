@@ -9,13 +9,31 @@ use App\Models\Ticket;
 
 class AdminController extends Controller
 {
-    public function index(){
-        $countDestinasi = destinasi::count();
-        $countUser = User::count();
-        $countTicket = Ticket::count();
-        // dd($countDestinasi, $countUser, $countTicket);
-        return view("admin.dashboard",compact("countDestinasi","countUser","countTicket"));
-    }
+    public function index()
+{
+    // Mengambil jumlah destinasi, pengguna, dan tiket
+    $countDestinasi = Destinasi::count();
+    $countUser = User::count();
+    $countTicket = Ticket::count();
+    
+    // Mengambil 5 tiket terbaru
+    $recentTickets = Ticket::latest()->take(5)->with('destinasi')->get(); // Ambil 5 tiket terbaru
+    
+    // Mengambil 5 destinasi terbaru
+    $recentDestinasi = Destinasi::latest()->take(5)->get(); // Ambil 5 destinasi terbaru
+    
+    // Mengirim data ke view
+    return view('admin.dashboard', compact(
+        'recentTickets', 
+        'recentDestinasi', 
+        'countDestinasi', 
+        'countUser', 
+        'countTicket'
+    ));
+}
+
+    
+
 
     public function destinasi(){
         $data = destinasi::all();

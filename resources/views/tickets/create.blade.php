@@ -36,7 +36,7 @@
 </head>
 <body class="bg-gray-100 font-sans">
 
-<form id="orderForm" action="{{ route('tickets.store', ['destinasiId' => $destinasi->id]) }}" method="POST" onsubmit="confirmOrder(event)">
+<form id="orderForm" action="{{ route('tickets.checkout', ['destinasiId' => $destinasi->id]) }}" method="POST" onsubmit="confirmOrder(event)">
     @csrf
     <input type="hidden" name="destinasi_id" value="{{ $destinasi->id }}">
     <input type="hidden" name="price" id="harga" value="{{ $destinasi->harga }}">
