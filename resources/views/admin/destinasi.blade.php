@@ -15,13 +15,14 @@
 
 <body>
     <!-- SIDEBAR -->
-    <section id="sidebar">
-        <a href="index.php" class="brand">
-            <i class='bx bxs-smile'></i>
+     <!-- SIDEBAR -->
+     <section id="sidebar">
+	<a href="{{ route('admin.dashboard') }}" class="brand">
+        <i class='bx bxs-leaf'></i>
             <span class="text">TrekTrove</span>
         </a>
         <ul class="side-menu top">
-            <li>
+        <li>
                 <a href="{{ route('admin.dashboard') }}">
                     <i class='bx bxs-dashboard'></i>
                     <span class="text">Dashboard</span>
@@ -40,14 +41,7 @@
                 </a>
             </li>
         </ul>
-        <ul class="side-menu">
-            <li>
-                <a href="#" class="logout">
-                    <i class='bx bxs-log-out-circle'></i>
-                    <span class="text">Logout</span>
-                </a>
-            </li>
-        </ul>
+
     </section>
     <!-- SIDEBAR -->
 
@@ -56,7 +50,7 @@
         <!-- NAVBAR -->
         <nav>
             <i class='bx bx-menu'></i>
-            <a href="#" class="nav-link">Categories</a>
+            <!-- <a href="#" class="nav-link">Categories</a> -->
             <form action="#">
                 <div class="form-input">
                     <!-- <input type="search" placeholder="Search...">
@@ -65,14 +59,36 @@
             </form>
             <input type="checkbox" id="switch-mode" hidden>
             <label for="switch-mode" class="switch-mode"></label>
-            <a href="#" class="profile">
-                <img src="{{asset('images/profile.jpg')}}">
-            </a>
+
+            <!-- Profile Dropdown -->
+            <div class="relative">
+                <button id="dropdownDefault" data-dropdown-toggle="dropdown" class="flex items-center space-x-2 text-gray-600 hover:text-gray-900">
+                    <img class="w-8 h-8 rounded-full" src="{{ asset('images/profile.jpg') }}" alt="Profile Image">
+                </button>
+
+                <!-- Dropdown menu -->
+                <div id="dropdown" class="hidden z-10 w-44 bg-white rounded-lg shadow-md dark:bg-gray-800 dark:text-white">
+                    <div class="px-4 py-3 text-sm text-gray-900 dark:text-white">
+                        <!-- Displaying the name of the logged-in admin -->
+                        <span class="font-medium">{{ Auth::user()->name }}</span>
+                    </div>
+                    <div class="px-4 py-2">
+                        <!-- Logout button inside dropdown -->
+                        <form action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <button type="submit" class="block w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white">
+                                Logout
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
         </nav>
         <!-- NAVBAR -->
 
         <!-- MAIN -->
-        <main>
+        
             <!DOCTYPE html>
             <html lang="en">
 

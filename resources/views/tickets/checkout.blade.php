@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -118,9 +119,9 @@
             text-decoration: none;
             cursor: pointer;
         }
-
     </style>
 </head>
+
 <body>
     <div class="container">
         <h2>Detail Pemesanan Tiket</h2>
@@ -148,6 +149,7 @@
 
         <!-- Button Bayar -->
         <button class="pay-button" id="pay-button">Bayar Sekarang</button>
+
     </div>
 
     <!-- Main Modal -->
@@ -155,11 +157,20 @@
         <div class="modal-content">
             <span class="close" id="closeModal">&times;</span>
             <div class="w-12 h-12 rounded-full bg-green-100 dark:bg-green-900 p-2 flex items-center justify-center mx-auto mb-3.5">
-                <svg aria-hidden="true" class="w-8 h-8 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                <svg aria-hidden="true" class="w-8 h-8 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
             </div>
             <p class="mb-4 text-lg font-semibold text-gray-900 dark:text-white">Pembayaran Berhasil!</p>
         </div>
     </div>
+
+    <form id="paymentForm" method="POST" action="{{ route('tickets.success', $destinasi->id) }}" style="display:none;">
+        @csrf
+        <input type="text" name="snap" value="{{$snapToken}}">
+        <input type="text" name="tanggal" value="{{$ticket->tanggal}}">
+        <button type="submit" id="submit">submit</button>
+    </form>
 
     <script type="text/javascript">
         var payButton = document.getElementById('pay-button');
@@ -171,6 +182,7 @@
             // Ensure that snapToken is available
             var snapToken = '{{$snapToken}}'; // Make sure this is correctly passed and not empty
 
+
             if (snapToken) {
                 // Trigger snap popup
                 window.snap.pay(snapToken, {
@@ -179,10 +191,15 @@
                         successModal.style.display = "block";
                         console.log(result);
 
-                        // Redirect to the destinasi page after 2 seconds
+                        // Hide the submit button initially (optional)
+                        var submitButton = document.getElementById("submit");
+                        submitButton.style.display = "none";
+
+                        // Redirect after 2 seconds
                         setTimeout(function() {
-                            window.location.href = "{{ route('destinasi.show', $destinasi->id) }}"; // Replace with correct route
-                        }, 2000); // Redirect after 2 seconds
+                            // Automatically trigger the button click
+                            submitButton.click();
+                        }, 2000); // 2-second delay before clicking the button
                     },
                     onPending: function(result) {
                         alert("Waiting for your payment!");
@@ -213,4 +230,5 @@
         });
     </script>
 </body>
+
 </html>

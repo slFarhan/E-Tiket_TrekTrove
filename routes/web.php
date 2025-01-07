@@ -34,16 +34,21 @@ Route::middleware('auth')->group(function () {
     Route::get('/destinasi', [DestinasiController::class, 'destinasi'])->name('destinasi');
 
     Route::post('/tickets/checkout/{destinasiId}', [TicketController::class, 'checkout'])->name('tickets.checkout');
+    Route::post('/tickets/checkoutUser/{destinasiId}', [TicketController::class, 'checkoutUser'])->name('tickets.checkoutUser');
+
     Route::post('/tickets/success/{destinasiId}', [TicketController::class, 'success'])->name('tickets.success');
+    Route::get('/ticket/print/{id}', [TicketController::class, 'print'])->name('ticket.print');
+
 });
 
-Route::middleware('admin')->group(function () {
+
+
     Route::get('/formDestinasi', [DestinasiController::class, 'create']);
     Route::post('/formDestinasi/store', [DestinasiController::class, 'store'])->name('destinasi.store');
     Route::get('/destinasi/show/{id}', [AdminController::class, 'showEdit'])->name('destinasi.showEdit');
     Route::post('/destinasi/edit/{id}', [AdminController::class, 'update'])->name('destinasi.edit');
     Route::delete('/destinasi/delete/{id}', [AdminController::class, 'destroy'])->name('destinasi.delete');
-});
+
 
 
 

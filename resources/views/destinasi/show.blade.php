@@ -42,10 +42,6 @@
                         <x-responsive-nav-link :href="route('user.tickets')" class="text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
                             {{ __('Tiket') }}
                         </x-responsive-nav-link>
-
-                        <x-responsive-nav-link :href="route('profile.edit')" class="text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
-                            {{ __('Pengaturan') }}
-                        </x-responsive-nav-link>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
 
@@ -82,9 +78,10 @@
                 <a href="{{ route('destinasi') }}" class="mt-6 inline-block px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded hover:bg-blue-700">
                     Kembali
                 </a>
-                <a href="#" class="mt-2 inline-block px-4 py-2 text-sm font-medium text-white bg-green-600 rounded hover:bg-green-700">
-                    Pesan Tiket
-                </a>
+                <a href="{{ route('tickets.create', ['destinasiId' => $destinasi['id']]) }}"
+                            class="mt-2 inline-block px-4 py-2 text-sm font-medium text-white bg-green-600 rounded hover:bg-green-700">
+                            Pesan Tiket
+                        </a>
             </div>
         </div>
 

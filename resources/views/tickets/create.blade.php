@@ -63,7 +63,7 @@
                 <input type="text" name="nama" required class="border p-2 w-full">
 
                 <label for="date" class="block text-gray-700 font-medium mt-4">Tanggal</label>
-                <input type="date" name="tanggal" required class="border p-2 w-full" min="{{ now()->toDateString() }}">
+                <input type="datetime-local" name="tanggal" required class="border p-2 w-full" min="{{ now()->toDateString() }}">
 
                 <label for="quantity" class="block text-gray-700 font-medium mt-4">Jumlah Tiket</label>
                 <input type="number" id="quantity" name="jumlah" value="1" min="1" required class="border p-2 w-full" oninput="calculateTotal()">

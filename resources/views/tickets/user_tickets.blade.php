@@ -95,14 +95,40 @@
         <td class="px-4 py-3">{{ $ticket->tanggal }}</td>
         <td class="px-4 py-3">{{ $ticket->jumlah }}</td>
         <td class="px-4 py-3">Rp {{ number_format($ticket->total_harga, 0, ',', '.') }}</td>
-        <td class="px-4 py-3">{{ $ticket->status }}</td>
+        <td class="px-4 py-3">
+            {{ $ticket->status }}
+        </td>
+        <td class="px-4 py-3">
+    @if($ticket->status == 'pending')
+    <form action="{{ route('tickets.checkoutUser', $ticket->id) }}" method="POST">
+        @csrf
+        <input type="text" name="jumlah" value="{{$ticket->jumlah}}" style="display: none;">
+        <input type="text" name="nama" value="{{$ticket->nama}}" style="display: none;">
+        <input type="text" name="tanggal" value="{{$ticket->tanggal}}" style="display: none;">
+        <button
+            class="flex w-full items-center justify-center px-4 py-2 text-sm font-medium text-white rounded-lg bg-green-500 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">
+            Bayar Sekarang
+        </button>
+    </form>
+    @elseif($ticket->status == 'completed')
+    <a href="{{ route('ticket.print', $ticket->id) }}"
+        class="flex items-center justify-center px-4 py-2 text-sm font-medium text-white rounded-lg bg-green-500 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
+        target="_blank">
+        Cetak Tiket
+    </a>
+    @endif
+</td>
+
+
+
     </tr>
     @empty
     <tr>
-        <td colspan="5" class="px-4 py-3 text-center">Data tiket tidak tersedia</td>
+        <td colspan="6" class="px-4 py-3 text-center">Data tiket tidak tersedia</td>
     </tr>
     @endforelse
 </tbody>
+
 
         </table>
     </div>

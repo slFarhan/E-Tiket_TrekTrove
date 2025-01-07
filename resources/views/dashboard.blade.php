@@ -40,10 +40,6 @@
                         <x-responsive-nav-link :href="route('user.tickets')" class="text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
                             {{ __('Tiket') }}
                         </x-responsive-nav-link>
-
-                        <x-responsive-nav-link :href="route('profile.edit')" class="text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
-                            {{ __('Pengaturan') }}
-                        </x-responsive-nav-link>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
 
