@@ -10,17 +10,15 @@ class DestinasiController extends Controller
 {
     // Menampilkan halaman detail destinasi berdasarkan ID
     public function show($id)
-    {
-        // Mencari destinasi berdasarkan ID, jika tidak ditemukan akan menghasilkan error 404
-        $destinasi = Destinasi::findOrFail($id);
-        
-        $ulasan = Ulasan::where("destinasi_id", $id)->with('users')->get();
-        // dd($ulasan->users->name);
-        // Mengirim data destinasi ke view
-        return view('destinasi.show', compact('destinasi','ulasan'));
+{
+    $destinasi = Destinasi::with('maps')->findOrFail($id); // Pastikan menggunakan 'maps', bukan 'map'
+    $ulasan = Ulasan::where('destinasi_id', $id)->get();
+    
+    return view('destinasi.show', compact('destinasi', 'ulasan'));
+}
 
-        
-    }
+
+
 
     // Menampilkan halaman destinasi dengan filter pencarian dan kategori
     public function destinasi(Request $request)
@@ -79,6 +77,7 @@ class DestinasiController extends Controller
 
         return redirect()->route('admin.destinasi')->with('success','');
     }
+
 
     
 

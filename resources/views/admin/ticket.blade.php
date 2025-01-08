@@ -9,9 +9,10 @@
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<!-- My CSS -->
 	<link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <link rel="icon" href="{{ asset('images/logo2.png') }}" type="image/x-icon">
 	<link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
 
-	<title>AdminHub</title>
+	<title>Admin Tiket</title>
 </head>
 
 <body>
@@ -32,7 +33,7 @@
             <li>
                 <a href="{{ route('admin.destinasi') }}">
                     <i class='bx bxs-shopping-bag-alt'></i>
-                    <span class="text">My Store</span>
+                    <span class="text">Destinasi</span>
                 </a>
             </li>
 			<li class="active">

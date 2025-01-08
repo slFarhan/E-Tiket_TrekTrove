@@ -30,4 +30,9 @@ public function ulasan()
 {
     return $this->hasMany(Ulasan::class); // Asumsikan tabel ulasan menggunakan model Review
 }
+public function maps()
+{
+    return $this->hasMany(Map::class, 'destinasi_id');
+}
+
 }

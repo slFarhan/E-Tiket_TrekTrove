@@ -27,6 +27,7 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
     Route::get('/ticket', [AdminController::class, 'tickets'])->name('ticket');
 
     
+    
     // )->middleware(['verified'])->name('dashboard');
 
 
@@ -39,4 +40,6 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
 
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');
+
+
 });

@@ -123,21 +123,10 @@
                     class="flex md:w-full items-center after:content-[''] after:w-full after:h-1 after:border-b after:border-gray-200 after:border-1 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-gray-700">
                     <span
                         class="flex items-center after:content-['/'] sm:after:hidden after:mx-2 after:text-gray-200 dark:after:text-gray-500">
-                        xxx <span class="hidden sm:inline-flex sm:ms-2">Destinasi</span>
+                        Since <span class="hidden sm:inline-flex sm:ms-2"> 2024 </span>
                     </span>
                 </li>
-                <li
-                    class="flex md:w-full items-center after:content-[''] after:w-full after:h-1 after:border-b after:border-gray-200 after:border-1 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-gray-700">
-                    <span
-                        class="flex items-center after:content-['/'] sm:after:hidden after:mx-2 after:text-gray-200 dark:after:text-gray-500">
-
-                        xxx <span class="hidden sm:inline-flex sm:ms-2">Review</span>
-                    </span>
-                </li>
-                <li class="flex items-center">xxx
-                    <span class="me-2"></span>
-                    Pengunjung
-                </li>
+               
             </ol>
 
         </div>
@@ -197,12 +186,12 @@
 
 
     <section
-        class="bg-center bg-no-repeat bg-[url('https://i.ibb.co.com/qj6w16J/cartil1.jpg')] bg-gray-700 bg-blend-multiply">
+        class="bg-center bg-no-repeat bg-[url('https://i.ibb.co.com/qj6w16J/cartil1.jpg')] bg-gray-100 bg-blend-multiply">
 
         <div class="px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-56">
-            <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">
+            <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-blak md:text-5xl lg:text-6xl">
                 Mulai Petualanganmu di Bandung</h1>
-            <p class="mb-8 text-lg font-normal text-gray-300 lg:text-xl sm:px-16 lg:px-48">Buat kenangan indah di
+            <p class="mb-8 text-lg font-normal text-black-300 lg:text-xl sm:px-16 lg:px-48">Buat kenangan indah di
                 Bandung. Jelajahi keindahan, keseruan alam dan kenikmatan kulinernya dengan pengalaman tak terlupakan
                 bersama kami.</p>
             <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0">
@@ -215,14 +204,14 @@
                             d="M1 5h12m0 0L9 1m4 4L9 9" />
                     </svg>
                 </a>
-                <a href="#"
-                    class="inline-flex justify-center hover:text-gray-900 items-center py-3 px-5 sm:ms-4 text-base font-medium text-center text-white rounded-lg border border-white hover:bg-gray-100 focus:ring-4 focus:ring-gray-400">
-                    Learn more
+                <a href="{{route('gallery')}}"
+                    class="inline-flex justify-center hover:text-gray-900 items-center py-3 px-5 sm:ms-4 text-base font-medium text-center text-white rounded-lg border bg-gray-700 border-white hover:bg-gray-100 focus:ring-4 focus:ring-gray-400">
+                    Lihat Galeri
                 </a>
 
             </div>
             <br>
-            <p class="mb-8 text-lg font-normal text-gray-300 lg:text-xl sm:px-16 lg:px-48">Bergabunglah dengan kami dan tampilkan destinasi wisata Anda di website kami! Hubungi trektrove@gmail.com untuk info lebih lanjut.
+            <p class="mb-8 text-lg font-normal text-black-300 lg:text-xl sm:px-16 lg:px-48">Bergabunglah dengan kami dan tampilkan destinasi wisata Anda di website kami! Hubungi trektrove@gmail.com untuk info lebih lanjut.
             </p>
         </div>
     </section>

@@ -21,4 +21,5 @@ class Map extends Model
     {
         return $this->belongsTo(Destinasi::class);
     }
+
 }

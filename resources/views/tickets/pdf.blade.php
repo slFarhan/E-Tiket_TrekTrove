@@ -65,7 +65,7 @@
         }
 
         .barcode img {
-            max-width: 200px;
+            max-width: 500px;
         }
 
         .ticket-footer {
@@ -74,12 +74,27 @@
             color: #777;
             font-size: 0.9rem;
         }
+
+        .download-btn {
+            display: block;
+            margin: 30px auto;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .download-btn:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
-    <div class="ticket-container">
+    <div class="ticket-container" id="ticketContainer">
         <div class="ticket-header">
-            <img src="{{ asset('images/profile.jpg') }}" alt="Logo">
+            <img src="{{ asset('images/logo2.png') }}" alt="Logo">
             <h1>Detail Tiket Pemesanan</h1>
         </div>
 
@@ -111,14 +126,58 @@
         </table>
 
         <div class="barcode">
-    <p>Scan Barcode:</p>
-    <img src="data:image/png;base64,{{ DNS1D::getBarcodePNG((string) $ticket->id, 'C128') }}" alt="Barcode">
-
-</div>
+            <p>Scan Barcode:</p>
+            <img src="{{ asset('images/barcode.png') }}" alt="Barcode">
+        </div>
 
         <div class="ticket-footer">
             <p>Terima kasih telah memesan tiket melalui Trektrove!</p>
         </div>
+
+        <!-- Button to download PDF -->
+        <button class="download-btn" id="downloadPDFBtn">Unduh PDF</button>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
+
+
+    <script>
+    document.getElementById('downloadPDFBtn').addEventListener('click', function() {
+        const element = document.getElementById('ticketContainer');
+        const printButton = document.getElementById('downloadPDFBtn');
+
+        // Sembunyikan tombol cetak
+        printButton.style.display = 'none';
+
+        const options = {
+            filename: 'tiket-pemesanan.pdf',
+            html2canvas: {
+                scale: 3,  // Menentukan kualitas gambar yang lebih tinggi
+                logging: true,
+                letterRendering: true,
+                useCORS: true,
+            },
+            jsPDF: {
+                unit: 'mm',
+                format: 'a4',
+                orientation: 'portrait',
+                margin: [10, 10, 10, 10],  // Menambahkan margin untuk menghindari pemotongan
+            }
+        };
+
+        html2pdf().from(element).set(options).save().then(() => {
+            // Tampilkan kembali tombol cetak setelah selesai
+            printButton.style.display = 'block';
+        }).catch((error) => {
+            // Jika ada error, tetap tampilkan tombol cetak
+            printButton.style.display = 'block';
+            console.error('Error generating PDF:', error);
+        });
+    });
+</script>
+
+
+
+
 </body>
 </html>

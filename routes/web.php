@@ -42,8 +42,8 @@ Route::middleware('auth')->group(function () {
 });
 
 
-
-    Route::get('/formDestinasi', [DestinasiController::class, 'create']);
+Route::get('/formDestinasi', [DestinasiController::class, 'create'])->name('destinasi.create');
+    Route::get('/formDestinasi', [DestinasiController::class, 'create'])->name('destinasi.create');
     Route::post('/formDestinasi/store', [DestinasiController::class, 'store'])->name('destinasi.store');
     Route::get('/destinasi/show/{id}', [AdminController::class, 'showEdit'])->name('destinasi.showEdit');
     Route::post('/destinasi/edit/{id}', [AdminController::class, 'update'])->name('destinasi.edit');

@@ -45,30 +45,44 @@ class AdminController extends Controller
     return view('destinasi.edit',compact('data'));
     }
 
-    public function update(Request $request, $id){
-        // dd($request->all());
+    public function update(Request $request, $id)
+    {
+        // Validate the incoming data
         $request->validate([
-            'nama'=> 'required|string',
-            'deskripsi' =>'required|string',
+            'nama' => 'required|string',
+            'deskripsi' => 'required|string',
             'harga' => 'required|string',
-            'kategori'=> 'required|string',
-            'foto' =>'required|image|max:10240',
+            'kategori' => 'required|string',
+            'foto' => 'nullable|image|max:10240', // Foto is now optional
         ]);
-
-        $pathGambar = $request->file('foto')->store('public/gambar');
-        
+    
+        // Find the existing data
         $data = destinasi::findOrFail($id);
-        // dd($data);
+    
+        // Check if a new photo is uploaded
+        if ($request->hasFile('foto')) {
+            // Store the new image
+            $pathGambar = $request->file('foto')->store('public/gambar');
+        } else {
+            // If no new image, use the existing one
+            $pathGambar = $data->gambar;
+        }
+    
+        // Update the data
         $data->update([
-            'nama'=> $request->nama,
-            'deskripsi' =>  $request->deskripsi,
-            'harga' =>  $request->harga,
-            'kategori'=>  $request->kategori,
+            'nama' => $request->nama,
+            'deskripsi' => $request->deskripsi,
+            'harga' => $request->harga,
+            'kategori' => $request->kategori,
             'gambar' => $pathGambar,
+            'latitude' => $request->latitude,  // Ensure latitude is also updated if provided
+            'longitude' => $request->longitude,  // Ensure longitude is also updated if provided
         ]);
-
+    
+        // Redirect to the destinasi index page
         return redirect('/admin/destinasi');
     }
+    
 
     public function destroy($id){
         $data = destinasi::find($id);
