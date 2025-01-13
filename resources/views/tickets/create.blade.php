@@ -92,7 +92,7 @@
         </div>
 
         <!-- Form Pemesanan Tiket -->
-<form action="{{ route('order.ticket') }}" method="POST">
+<<form id="orderForm" action="{{ route('tickets.checkout', ['destinasiId' => $destinasi->id]) }}" method="POST" >
     @csrf
     <button type="button" onclick="showConfirmationModal()"
         class="w-full mt-6 bg-green-500 text-white font-semibold py-2 rounded-md hover:bg-green-600 transition">
